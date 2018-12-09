@@ -1,5 +1,11 @@
 import java.util.Objects;
 
+/**
+ * Class that describes the Access Point simple information
+ *      String SSID
+ *      String BSSID
+ *      int rssi
+ */
 public class WifiResult {
 
     private String SSID;

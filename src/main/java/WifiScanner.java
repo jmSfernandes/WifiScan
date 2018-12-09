@@ -3,6 +3,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that allows the scan of available wifi networks in the proximity.
+ * Returns a list of of WifiResult objects.
+ * The list contains the SSID, Bssid and Rssi for each available Access Point
+ */
 public class WifiScanner {
     private String OS;
     private final String PROCESS_WINDOWS = "netsh wlan show networks mode=Bssid";
@@ -10,15 +15,38 @@ public class WifiScanner {
     private final String PROCESS_OSX = "airport -s";
     private String DEFAULT_INTERFACE = "wlan0";
 
+    /**
+     * @throws Exception
+     *  when OS is not one of the following
+     *      * Windows
+     *      * Linux
+     *      * OSX
+     */
     public WifiScanner() throws Exception {
         OS = Utils.getOS();
     }
 
+    /**
+     * @param wifiInterface
+     * @throws Exception
+     *  when OS is not one of the following
+     *      * Windows
+     *      * Linux
+     *      * OSX
+     *
+     * WifiInterface- allows the user to change the desired interface on Linux
+     * Default_Interface="wlan0"
+     */
     public WifiScanner(String wifiInterface) throws Exception {
         OS = Utils.getOS();
         this.DEFAULT_INTERFACE = wifiInterface;
     }
 
+    /**
+     * @return List<WifiResult>
+     * @throws Exception
+     * Runs the Wifi scan
+     */
     public List<WifiResult> run() throws Exception {
 
         Runtime rt = Runtime.getRuntime();
