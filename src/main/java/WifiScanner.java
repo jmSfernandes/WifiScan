@@ -28,24 +28,29 @@ public class WifiScanner {
 
     /**
      * @param wifiInterface
+     *      *WifiInterface- allows the user to change the desired interface on Linux
+     *      * Default_Interface="wlan0"
      * @throws Exception
      *  when OS is not one of the following
      *      * Windows
      *      * Linux
      *      * OSX
      *
-     * WifiInterface- allows the user to change the desired interface on Linux
-     * Default_Interface="wlan0"
-     */
+     *
+            */
     public WifiScanner(String wifiInterface) throws Exception {
         OS = Utils.getOS();
         this.DEFAULT_INTERFACE = wifiInterface;
     }
 
     /**
-     * @return List<WifiResult>
+     * @return
+     *     Returns the Wifi scan within a WifiResult list
      * @throws Exception
-     * Runs the Wifi scan
+     *  when OS is not one of the following
+     *      * Windows
+     *      * Linux
+     *      * OSX
      */
     public List<WifiResult> run() throws Exception {
 
